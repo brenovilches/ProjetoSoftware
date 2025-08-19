@@ -1,6 +1,7 @@
 package entidades;
 
 import java.sql.SQLOutput;
+import java.util.jar.JarOutputStream;
 
 public class Livro {
     public String titulo;
@@ -28,6 +29,18 @@ public class Livro {
         }
     }
 
+    public void devolveLivro(int quantidade) {
+        if (quantidade > 0) {
+            this.quantidade += quantidade;
+        } else {
+            System.out.println("Valor inválido");
+        }
+    }
+
+    public double valorTotal(){
+        double valorTotal = this.quantidade * this.valor;
+        return valorTotal;
+    }
 
 
     @Override
@@ -36,6 +49,7 @@ public class Livro {
                 "\ntitulo: " + titulo +
                 "\nautor: " + autor +
                 "\nquantidade: " + quantidade +
-                "\nvalor: R$" + valor;
+                "\nvalor: R$" + valor +
+                "\nvalorTotal: " + valorTotal();
     }
 }
